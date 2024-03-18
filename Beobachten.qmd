@@ -1,0 +1,3 @@
+# Beobachten, beschreiben, erklären, bewerten, verändern
+
+![Abbildung: Jan S. Voßwinkel](./Tikz/Beobachten.svg)

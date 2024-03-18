@@ -13,6 +13,7 @@ book:
     - intro.qmd
     - Zukunft.qmd
     - Oekonomie.qmd
+    - Beobachten.qmd
 
 format:
   html:
