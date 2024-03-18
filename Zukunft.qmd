@@ -1,1 +1,419 @@
 # Zukunft
+
+-   Niemand hat je die Zukunft gesehen
+
+-   aber alle erwarten, dass es sie gibt\
+    $\rightarrow$ Sie rechnen damit, heute nach Hause zu kommen, oder?
+
+## Begriff
+
+-   Zukunft bezeichnet noch kommende zeitliche Perioden
+
+-   Zeit ordnet Perioden in eine Reihenfolge
+
+-   Einzelne Perioden hängen zusammen
+
+-   Zukunft ist aber nicht völlig determiniert
+
+## Vergangenheit, Gegenwart und Zukunft
+
+-   Die Vergangenheit war einmal eine/die Zukunft
+
+-   Blick in die Vergangenheit offenbart, wie Vergangenheit, Gegenwart und Zukunft zusammenhingen
+
+-   Arbeitshypothese: Vielleicht besteht dieser Zusammenhang fort
+
+```{r echo=F, message=F, warning=F, cache=T}
+
+# knitr::opts_chunk$set(dev = 'svg') # set output device to svg
+
+
+library(tidyverse) 
+library(eurostat)
+
+mydata <- get_eurostat("nama_10_gdp",
+                       type = "label",
+                       time_format = "num",
+                       select_time="Y",
+                       cache = T
+) %>%
+  filter(na_item =="Gross domestic product at market prices",
+         unit =="Chain linked volumes (2015), million euro",
+         geo==c("Germany")
+         )
+# Name für Germany kürzen
+# mydata$geo[mydata$geo=="Germany (until 1990 former territory of the FRG)"] <- "Germany"
+
+
+model1 <- lm(values ~ time+ I(time^2), data=mydata)
+
+options(scipen=999)
+#summary(model1)
+
+temp_var <- predict(model1, interval="prediction")
+
+mydata <- cbind(mydata, temp_var)
+```
+
+```{r echo=F, warning=F, message=F, cache=F}
+
+library(tidyverse)
+
+mydata_short <- mydata %>% select(time, values, fit, lwr, upr)
+
+df <- data.frame(seq(2022, 2060, 1), NA, NA, NA, NA)
+names(df) <- c("time", "values", "fit", "lwr", "upr" )
+
+mydata_extended <- rbind(mydata_short, df)
+
+options(scipen = 999)
+
+p <- mydata_extended %>%
+    ggplot(aes(time, values))+
+   # xlim(1990, 2021)+
+    geom_point()+
+   # geom_line() +
+    geom_smooth(method = 'lm', 
+                formula = y ~ x+ I(x^2),
+                fullrange=T,
+    #            color="red"
+                )+
+   # geom_smooth(method = 'lm',
+   #             fullrange=T
+  #  )+
+  geom_vline(xintercept=2022,linetype = "dashed" )+
+geom_line(aes(y=lwr), color = "red", linetype = "dashed")+
+geom_line(aes(y=upr), color = "red", linetype = "dashed")+
+    annotate("text", x=2000, y=4500000, label="Vergangenheit", color="grey30")+
+  annotate("text", x=2035, y=4500000, label="Zukunft", color="grey30")+
+  theme_classic() +
+    scale_x_continuous(breaks = 2022,
+                     labels = "Gegenwart") +
+      scale_y_continuous(#expand = c(0, 0), 
+                     breaks = NULL) +
+  theme(axis.line = element_line(arrow = arrow(type='closed', length = unit(5,'pt'))))+
+  labs(#fill="Index",
+       title="Prognoseunsicherheit",
+       #subtitle= "Anteil am BIP, 2020",
+       x="Zeit", y='Werte',
+       caption = paste('Illustration: Jan S. Voßwinkel, 2023'))
+
+
+
+p2 <- mydata_extended %>%
+    ggplot(aes(time, values))+
+   # xlim(1990, 2021)+
+    geom_point()+
+   # geom_line() +
+    geom_smooth(method = 'lm', 
+                formula = y ~ x+ I(x^2),
+                fullrange=F,
+    #            color="red"
+                )+
+   # geom_smooth(method = 'lm',
+   #             fullrange=T
+  #  )+
+  geom_vline(xintercept=2022,linetype = "dashed" )+
+geom_line(aes(y=lwr), color = "red", linetype = "dashed")+
+geom_line(aes(y=upr), color = "red", linetype = "dashed")+
+    annotate("text", x=2000, y=4500000, label="Vergangenheit", color="grey30")+
+  annotate("text", x=2035, y=4500000, label="Zukunft", color="grey30")+
+  theme_classic() +
+    scale_x_continuous(breaks = 2022,
+                     labels = "Gegenwart") +
+      scale_y_continuous(#expand = c(0, 0), 
+                     breaks = NULL) +
+  theme(axis.line = element_line(arrow = arrow(type='closed', length = unit(5,'pt'))))+
+  labs(#fill="Index",
+       title="Prognoseunsicherheit",
+       #subtitle= "Anteil am BIP, 2020",
+       x="Zeit", y='Werte',
+       caption = paste('Illustration: Jan S. Voßwinkel, 2023'))
+
+```
+
+```{r echo=F, warning=F, message=F, cache=T}
+
+p +
+  coord_cartesian(xlim = c(1990, 2021), ylim=c(min(mydata$values), max(mydata$values)))
+
+```
+
+-   Beobachtungen der Vergangenheit
+-   Regelmäßiger Prozess
+-   Erkennbarer Trend
+
+```{r echo=F, warning=F, message=F, cache=T}
+
+p2
+
+```
+
+-   Wie geht es weiter?
+
+```{r echo=F, warning=F, message=F, cache=T}
+
+p
+```
+
+## Unterschiedliche Modelle zeitlicher Verläufe
+
+### Zukunft hängt von der Gegenwart ab
+
+-   $x_t=f(x_{t-1})+e_t$
+
+### Zukunft hängt nur von der Zeit ab
+
+-   $x_t=\beta_0+ f(t)+e_t$
+
+$\rightarrow$ Ansatzpunkte zur Gestaltung der Zukunft:
+
+-   Der funktionale Zusammenhang $f(\cdot)$
+
+-   Die Gegenwart
+
+-   *Nicht*: Der Störterm
+
+### Zwischenfazit
+
+-   Die Zukunft ist ungewiss
+
+-   Selbst bei Fortschreibung der Gegenwart hohe Unsicherheit in fernerer Zukunft
+
+-   Noch höhere Unsicherheit bei Strukturbrüchen
+
+-   Zukunft hängt ab von
+
+    -   eigenen Entscheidungen und
+    -   Entscheidungen anderer
+
+$\rightarrow$ Ökonomische Analyse sozialer Phänomene
+
+### Teile der Zukunft sind bereits vergangen
+
+```{r echo=F, warning=F, message=F, cache=T}
+library(tidyverse)
+
+# Funktionen definieren
+  
+  x <- -3:3
+  
+  Grenze_oben <- function(x) x
+  Grenze_unten <- function(x) -x
+  
+  Grenze_oben1 <- function(x) -.5+x
+  Grenze_unten1 <- function(x) -1.5-x
+  
+  z  <- seq(-1, 0, 0.01)
+  z1  <- seq(-.5, .7, 0.01)
+  
+  # Grafik
+  
+  ggplot()+
+    annotate("point", x=0, y=0)+
+    
+    annotate("segment", x=0, xend=0, y=-2.2, yend=1, linetype="dashed")+
+   # stat_function(fun = Grenze_oben, xlim = c(0, 1))+
+  #  stat_function(fun = Grenze_unten, xlim = c(0, 1))+
+    geom_ribbon(aes(x = z, ymin = Grenze_unten(z), ymax = Grenze_oben(z)), alpha = 0.25) +
+    annotate("point", x=-.5, y=-1)+
+    geom_ribbon(aes(x = z1, ymin = Grenze_unten1(z1), ymax = Grenze_oben1(z1)), alpha = 0.25) +
+    annotate("segment", x=0, xend = .5, y=0, yend = 0, linetype="dashed")+
+    
+    geom_segment(aes(x = -.5, y = -1, xend = .5, yend = 0), size=.8,
+                 arrow = arrow(length = unit(0.2, "cm")))+
+    annotate("segment", x=.5, xend = .5, y=-2.2, yend=1, linetype="dashed")+
+    annotate("segment", x=-.5, xend = -.5, y=-2.2, yend=1, linetype="dashed")+
+    scale_x_continuous(breaks = c(-.5, 0, .5),
+                       labels = expression("t"[-1], "t"[0], "t"[1]))+
+    scale_y_continuous(breaks = NULL)+
+    theme_classic()+
+    theme(panel.grid = element_blank()) +
+    theme(axis.line = element_line(arrow = arrow(type='closed', length = unit(5,'pt'))))+
+    labs(title="Welche Information beeinflusst die Gegenwart",
+         caption="Darstellung: Jan S. Voßwinkel",
+         x = "Zeit", y = "Position", 
+         color="",
+         fill="")
+
+```
+
+$\rightarrow$ Teile der Zukunft sind nicht mehr änderbar
+
+## Prognose und Freiheit
+
+-   Passen Vorhersehbarkeit und Willensfreiheit zusammen?
+
+-   Individuelles Verhalten ist oft je nach Situation gut vorhersehbar (z.B. Straßenverkehr)
+
+-   Soziale Phänomene hängen oft nicht stark von individuellem Verhalten ab sondern vom Zusammenspiel vieler Entscheidungen (manchmal geben aber auch Individuen den Ausschlag)
+
+## Zur Planbarkeit sozialer Phänomene
+
+-   Die Zukunft ist (in Teilen) gestaltbar
+
+-   Gestaltbarkeit aber nicht beliebig: Gesellschaftliche Prozesse lassen sich nicht beliebig formen
+
+## Revolution vs Reform
+
+-   Revolution bedeutet das Verlassen des Rahmens, für den man (einigermaßen) verstanden hat.
+
+-   Reformen bedeuten, dass man innerhalb eines gegebenen Rahmens Veränderungen vornimmt.
+
+## Welche Zukunftsherausforderungen lassen sich erahnen?
+
+### Klimawandel, Klimaschutz- und -anpassungspolitik
+
+### Technischer Fortschritt: Digitalisierung, künstliche Intelligenz
+
+### Migration und Integration
+
+### Ökonomische und politische Polarisierung\*\*
+
+### Demokratie und Menschenrechte
+
+-   $\dots$
+
+# Geschichte: Woher kommen wir?
+
+## Lebenserwartung
+
+```{r echo=F, warning=F, message=F}
+
+library(tidyverse)
+library(owidR)
+
+df <- read.csv(file='life-expectancy.csv')
+
+df %>% filter(Entity=="World") %>% 
+  ggplot(aes(x=Year, y=Life.expectancy.at.birth..historical.))+
+  geom_line()+
+  labs(title="Lebenserwartung bei Geburt",
+       subtitle="Weltweit",
+       x="Jahr",
+       y="Lebenserwartung bei Geburt",
+       caption="Daten: Our World in Data")+
+  theme_light()
+
+```
+
+## Bevölkerung
+
+```{r echo=F, warning=F, message=F}
+
+df <- read.csv(file='population.csv')
+
+options(scipen=999)
+
+df %>% filter(Entity=="World") %>% 
+  ggplot(aes(Year, Population..historical.estimates.))+
+  geom_line()+
+  scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+
+  labs(title="Weltbevölkerung",
+       x="Jahr",
+       y="Weltbevölkerung",
+       caption="Daten: Our World in Data")+
+  theme_light()
+
+
+```
+
+## Wirtschaftskraft
+
+```{r echo=F, warning=F, message=F}
+
+df <- read.csv(file='maddison-data-gdp-per-capita-in-2011us-single-benchmark.csv')
+
+df %>% filter(Entity=="World") %>% 
+  ggplot(aes(Year, GDP.per.capita))+
+  geom_line()+
+  labs(title="Bruttoinlandsprodukt pro Kof",
+       subtitle="Weltweit",
+       x="Jahr",
+       y="Bruttoinlandsprodukt pro Kopf",
+       caption="Daten: Our World in Data")+
+  theme_light()
+
+df %>% filter(Entity=="France") %>% 
+  ggplot(aes(Year, GDP.per.capita))+
+  geom_line()+
+  labs(title="Bruttoinlandsprodukt pro Kof",
+       subtitle="Frankreich",
+       x="Jahr",
+       y="Bruttoinlandsprodukt pro Kopf",
+       caption="Daten: Our World in Data")+
+  theme_light()
+
+
+```
+
+## THG-Emmissionen
+
+```{r echo=F, warning=F, message=F}
+
+df <- read.csv('climate-change.csv')
+
+df %>% filter(Entity=="World") %>% 
+  ggplot(aes(Year, CO2.concentrations))+
+  geom_line()+
+  scale_x_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+
+  labs(title= expression("CO"[2]~Konzentration~"in der Atmosphäre"),
+       subtitle="Weltweit",
+       x="Jahr",
+       y=expression("CO"[2]~Konzentration~"in der Atmosphäre, ppm"),
+       caption="Daten: Our World in Data")+
+  theme_light()
+
+df %>% filter(Entity=="World",
+              Year>=0) %>% 
+  ggplot(aes(Year, CO2.concentrations))+
+  geom_line()+
+  scale_x_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+
+  labs(title= expression("CO"[2]~Konzentration~"in der Atmosphäre"),
+       subtitle="Weltweit",
+       x="Jahr",
+       y=expression("CO"[2]~Konzentration~"in der Atmosphäre, ppm"),
+       caption="Daten: Our World in Data")+
+  theme_light()
+
+df %>% filter(Entity=="World",
+              Year>=1500) %>% 
+  ggplot(aes(Year, CO2.concentrations))+
+  geom_line()+
+  scale_x_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+
+  labs(title= expression("CO"[2]~Konzentration~"in der Atmosphäre"),
+       subtitle="Weltweit",
+       x="Jahr",
+       y=expression("CO"[2]~Konzentration~"in der Atmosphäre, ppm"),
+       caption="Daten: Our World in Data")+
+  theme_light()
+
+
+
+```
+
+```{r echo=F, message=FALSE, warning=FALSE, cache=F, eval=F, include=F}
+library(tidyverse)
+library(owidR)
+
+df <- owid("temperature-anomaly")
+
+library(showtext)
+
+Sys.setlocale("LC_TIME", "German")
+
+df %>%
+  filter(entity=="Global") %>%
+  ggplot(aes(x=year,
+             y=`Median temperature anomaly from 1961-1990 average`))+
+  geom_ribbon(aes(x=year, ymax=`Upper bound (95% CI)`, ymin=`Lower bound (95% CI)`), fill="gray", alpha=.5) +
+  geom_line()+
+  geom_smooth()+
+  labs(title="Globale Temperaturanomaly von der Peride 1961-1990",
+       x="Jahr",
+       y="Median Temperaturabweichung von 1961-1990",
+       caption=paste("Abbildung: Jan S. Voßwinkel, Daten: Our World in Data, Tabelle temperature-anomaly, Datum des Datenabrufs:" Sys.Date(), sep = " "))
+  
+    
+
+```
