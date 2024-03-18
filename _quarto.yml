@@ -8,8 +8,11 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+<<<<<<< HEAD
     - Zukunft.qmd
     - Oekonomie.qmd
+=======
+>>>>>>> 4099e06bef57ca4e986f7ea0051fc66e9580865a
     - summary.qmd
     - references.qmd
 
