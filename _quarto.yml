@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Was is Zukunftsoekonomie?"
+  author: "Prof. Dr. Jan S. Voßwinkel"
+  date: "18.3.2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
