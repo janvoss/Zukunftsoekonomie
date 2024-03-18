@@ -45,7 +45,7 @@ mydata <- get_eurostat("nama_10_gdp",
 # mydata$geo[mydata$geo=="Germany (until 1990 former territory of the FRG)"] <- "Germany"
 
 
-model1 <- lm(values ~ time+ I(time^2), data=mydata)
+model1 <- lm(values ~ TIME_PERIOD + I(TIME_PERIOD^2), data=mydata)
 
 options(scipen=999)
 #summary(model1)
@@ -59,17 +59,17 @@ mydata <- cbind(mydata, temp_var)
 
 library(tidyverse)
 
-mydata_short <- mydata %>% select(time, values, fit, lwr, upr)
+mydata_short <- mydata %>% select(TIME_PERIOD, values, fit, lwr, upr)
 
 df <- data.frame(seq(2022, 2060, 1), NA, NA, NA, NA)
-names(df) <- c("time", "values", "fit", "lwr", "upr" )
+names(df) <- c("TIME_PERIOD", "values", "fit", "lwr", "upr" )
 
 mydata_extended <- rbind(mydata_short, df)
 
 options(scipen = 999)
 
 p <- mydata_extended %>%
-    ggplot(aes(time, values))+
+    ggplot(aes(TIME_PERIOD, values))+
    # xlim(1990, 2021)+
     geom_point()+
    # geom_line() +
@@ -101,7 +101,7 @@ geom_line(aes(y=upr), color = "red", linetype = "dashed")+
 
 
 p2 <- mydata_extended %>%
-    ggplot(aes(time, values))+
+    ggplot(aes(TIME_PERIOD, values))+
    # xlim(1990, 2021)+
     geom_point()+
    # geom_line() +

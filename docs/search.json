@@ -18,5 +18,125 @@
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Einleitung</span>"
     ]
+  },
+  {
+    "objectID": "Zukunft.html",
+    "href": "Zukunft.html",
+    "title": "2  Zukunft",
+    "section": "",
+    "text": "2.1 Begriff",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#begriff",
+    "href": "Zukunft.html#begriff",
+    "title": "2  Zukunft",
+    "section": "",
+    "text": "Zukunft bezeichnet noch kommende zeitliche Perioden\nZeit ordnet Perioden in eine Reihenfolge\nEinzelne Perioden hängen zusammen\nZukunft ist aber nicht völlig determiniert",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#vergangenheit-gegenwart-und-zukunft",
+    "href": "Zukunft.html#vergangenheit-gegenwart-und-zukunft",
+    "title": "2  Zukunft",
+    "section": "2.2 Vergangenheit, Gegenwart und Zukunft",
+    "text": "2.2 Vergangenheit, Gegenwart und Zukunft\n\nDie Vergangenheit war einmal eine/die Zukunft\nBlick in die Vergangenheit offenbart, wie Vergangenheit, Gegenwart und Zukunft zusammenhingen\nArbeitshypothese: Vielleicht besteht dieser Zusammenhang fort\n\n\n\n\n\n\n\n\n\n\n\nBeobachtungen der Vergangenheit\nRegelmäßiger Prozess\nErkennbarer Trend\n\n\n\n\n\n\n\n\n\n\n\nWie geht es weiter?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#unterschiedliche-modelle-zeitlicher-verläufe",
+    "href": "Zukunft.html#unterschiedliche-modelle-zeitlicher-verläufe",
+    "title": "2  Zukunft",
+    "section": "2.3 Unterschiedliche Modelle zeitlicher Verläufe",
+    "text": "2.3 Unterschiedliche Modelle zeitlicher Verläufe\n\n2.3.1 Zukunft hängt von der Gegenwart ab\n\n\\(x_t=f(x_{t-1})+e_t\\)\n\n\n\n2.3.2 Zukunft hängt nur von der Zeit ab\n\n\\(x_t=\\beta_0+ f(t)+e_t\\)\n\n\\(\\rightarrow\\) Ansatzpunkte zur Gestaltung der Zukunft:\n\nDer funktionale Zusammenhang \\(f(\\cdot)\\)\nDie Gegenwart\nNicht: Der Störterm\n\n\n\n2.3.3 Zwischenfazit\n\nDie Zukunft ist ungewiss\nSelbst bei Fortschreibung der Gegenwart hohe Unsicherheit in fernerer Zukunft\nNoch höhere Unsicherheit bei Strukturbrüchen\nZukunft hängt ab von\n\neigenen Entscheidungen und\nEntscheidungen anderer\n\n\n\\(\\rightarrow\\) Ökonomische Analyse sozialer Phänomene\n\n\n2.3.4 Teile der Zukunft sind bereits vergangen\n\n\n\n\n\n\n\n\n\n\\(\\rightarrow\\) Teile der Zukunft sind nicht mehr änderbar",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#prognose-und-freiheit",
+    "href": "Zukunft.html#prognose-und-freiheit",
+    "title": "2  Zukunft",
+    "section": "2.4 Prognose und Freiheit",
+    "text": "2.4 Prognose und Freiheit\n\nPassen Vorhersehbarkeit und Willensfreiheit zusammen?\nIndividuelles Verhalten ist oft je nach Situation gut vorhersehbar (z.B. Straßenverkehr)\nSoziale Phänomene hängen oft nicht stark von individuellem Verhalten ab sondern vom Zusammenspiel vieler Entscheidungen (manchmal geben aber auch Individuen den Ausschlag)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#zur-planbarkeit-sozialer-phänomene",
+    "href": "Zukunft.html#zur-planbarkeit-sozialer-phänomene",
+    "title": "2  Zukunft",
+    "section": "2.5 Zur Planbarkeit sozialer Phänomene",
+    "text": "2.5 Zur Planbarkeit sozialer Phänomene\n\nDie Zukunft ist (in Teilen) gestaltbar\nGestaltbarkeit aber nicht beliebig: Gesellschaftliche Prozesse lassen sich nicht beliebig formen",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#revolution-vs-reform",
+    "href": "Zukunft.html#revolution-vs-reform",
+    "title": "2  Zukunft",
+    "section": "2.6 Revolution vs Reform",
+    "text": "2.6 Revolution vs Reform\n\nRevolution bedeutet das Verlassen des Rahmens, für den man (einigermaßen) verstanden hat.\nReformen bedeuten, dass man innerhalb eines gegebenen Rahmens Veränderungen vornimmt.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#welche-zukunftsherausforderungen-lassen-sich-erahnen",
+    "href": "Zukunft.html#welche-zukunftsherausforderungen-lassen-sich-erahnen",
+    "title": "2  Zukunft",
+    "section": "2.7 Welche Zukunftsherausforderungen lassen sich erahnen?",
+    "text": "2.7 Welche Zukunftsherausforderungen lassen sich erahnen?\n\n2.7.1 Klimawandel, Klimaschutz- und -anpassungspolitik\n\n\n2.7.2 Technischer Fortschritt: Digitalisierung, künstliche Intelligenz\n\n\n2.7.3 Migration und Integration\n\n\n2.7.4 Ökonomische und politische Polarisierung**\n\n\n2.7.5 Demokratie und Menschenrechte\n\n\\(\\dots\\)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#lebenserwartung",
+    "href": "Zukunft.html#lebenserwartung",
+    "title": "2  Zukunft",
+    "section": "3.1 Lebenserwartung",
+    "text": "3.1 Lebenserwartung",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#bevölkerung",
+    "href": "Zukunft.html#bevölkerung",
+    "title": "2  Zukunft",
+    "section": "3.2 Bevölkerung",
+    "text": "3.2 Bevölkerung",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#wirtschaftskraft",
+    "href": "Zukunft.html#wirtschaftskraft",
+    "title": "2  Zukunft",
+    "section": "3.3 Wirtschaftskraft",
+    "text": "3.3 Wirtschaftskraft",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
+  },
+  {
+    "objectID": "Zukunft.html#thg-emmissionen",
+    "href": "Zukunft.html#thg-emmissionen",
+    "title": "2  Zukunft",
+    "section": "3.4 THG-Emmissionen",
+    "text": "3.4 THG-Emmissionen",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Zukunft</span>"
+    ]
   }
 ]
