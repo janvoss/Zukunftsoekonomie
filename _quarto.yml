@@ -8,6 +8,7 @@ book:
   # date: "18.3.2024
   subtitle: "Sommersemester 2024"
   language:  _language.yml
+  repo-url: https://github.com/janvoss/Zukunftsoekonomie.git
   chapters:
     - index.qmd
     - intro.qmd
@@ -18,6 +19,9 @@ book:
 format:
   html:
     theme: cosmo
+    code-fold: true
+    code-overflow: wrap
+    
   pdf:
     documentclass: scrreprt
 
